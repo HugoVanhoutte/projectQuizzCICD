@@ -41,6 +41,7 @@ jobs:
           echo "DB_USER=${{ secrets.PROD_DB_USER }}" >> $GITHUB_ENV 
           echo "DB_PASSWORD=${{ secrets.PROD_DB_PASSWORD }}" >> $GITHUB_ENV 
           echo "DB_NAME=${{ secrets.PROD_DB_NAME }}" >> $GITHUB_ENV
+          echo "DB_PORT=${{secrets.PROD_DB_PORT}}" >> $GITHUB_ENV
 
       # 6. Modifier l’API URL selon l’environnement
       - name: Configure API URL
