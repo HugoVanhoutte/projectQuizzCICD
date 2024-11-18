@@ -58,7 +58,9 @@ jobs:
           npm i
       # 7. Build du frontend
       - name: Build frontend
-        run: npm run build
+        run: |
+          cd frontv2
+          npm run build
 
       # 8. Déplacer le frontend compilé dans le backend
       # - name: Move frontend to backend
