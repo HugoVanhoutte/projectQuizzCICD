@@ -24,7 +24,7 @@ jobs:
       # 3. Installer les dépendances
       - name: Install dependencies
         run: |
-          cd backend
+          cd Back
           npm install
 
       # 4. Mettre le NODE_ENV en production
