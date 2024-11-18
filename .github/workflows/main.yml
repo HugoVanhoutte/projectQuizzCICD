@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '22'
 
       # 3. Installer les dépendances
       - name: Install dependencies
@@ -51,12 +51,14 @@ jobs:
       - name: Configure API URL
         run: echo "SERVER_URL=${{ secrets.SERVER_HOST }}" >> $GITHUB_ENV
 
-      # 7. Build du frontend
-      - name: Build frontend
+      # 7. Install front dependencies
+      - name: install front dependencies
         run: |
           cd frontv2
           npm i
-          npm run build
+      # 7. Build du frontend
+      - name: Build frontend
+        run: npm run build
 
       # 8. Déplacer le frontend compilé dans le backend
       # - name: Move frontend to backend
