@@ -47,7 +47,7 @@ jobs:
       - name: Configure API URL
         run: echo "SERVER_URL=${{ secrets.SERVER_URL }}" >> $GITHUB_ENV
 
-      # 7. Install front dependencies
+      # 7. Installation dependances du front
       - name: install front dependencies
         run: |
           cd frontv2
@@ -60,8 +60,7 @@ jobs:
 
       # 8. Déplacer le frontend compilé dans le backend
       - name: Move frontend to backend
-        run: |
-          mv frontv2/dist Back/public
+        run: mv frontv2/dist Back/public
 
       # 9. Déployer le backend
       - name: Deploy backend
