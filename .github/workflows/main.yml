@@ -28,8 +28,8 @@ jobs:
           npm install
 
       # 4. Mettre le NODE_ENV en production
-      - name: Set NODE_ENV to production
-        run: echo "NODE_ENV=production" >> $GITHUB_ENV
+      - name: Set NODE_ENV to prod
+        run: echo "NODE_ENV=prod" >> $GITHUB_ENV
 
       # 5. Configurer les variables d’environnement
       - name: Configure database environment variables
