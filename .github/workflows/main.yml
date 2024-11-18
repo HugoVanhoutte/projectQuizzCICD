@@ -36,16 +36,12 @@ jobs:
         run: |
           echo "FTP_USERNAME=${{ secrets.FTP_USERNAME }}" >> $GITHUB_ENV 
           echo "FTP_PASSWORD=${{ secrets.FTP_PASSWORD }}" >> $GITHUB_ENV 
-          echo "SERVER_HOST=${{ secrets.SERVER_HOST }}" >> $GITHUB_ENV 
+          echo "SERVER_URL=${{ secrets.SERVER_URL }}" >> $GITHUB_ENV 
           echo "PROD_DB_HOST=${{ secrets.PROD_DB_HOST }}" >> $GITHUB_ENV 
           echo "PROD_DB_USER=${{ secrets.PROD_DB_USER }}" >> $GITHUB_ENV 
           echo "PROD_DB_PASSWORD=${{ secrets.PROD_DB_PASSWORD }}" >> $GITHUB_ENV 
           echo "PROD_DB_NAME=${{ secrets.PROD_DB_NAME }}" >> $GITHUB_ENV
           echo "PROD_DB_PORT=${{secrets.PROD_DB_PORT}}" >> $GITHUB_ENV
-
-      # 6. Modifier l’API URL selon l’environnement
-      - name: Configure API URL
-        run: echo "SERVER_URL=${{ secrets.SERVER_URL }}" >> $GITHUB_ENV
 
       # 7. Installation dependances du front
       - name: install front dependencies
