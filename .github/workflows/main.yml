@@ -1,0 +1,63 @@
+name: CI/CD Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Vérifier le dépôt
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Installer Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      # 3. Installer les dépendances
+      - name: Install dependencies
+        run: |
+          cd backend
+          npm install
+
+      # 4. Mettre le NODE_ENV en production
+      - name: Set NODE_ENV to production
+        run: echo "NODE_ENV=production" >> $GITHUB_ENV
+
+      # 5. Configurer les variables d’environnement
+      - name: Configure database environment variables
+        run: |
+          # Variables FTP et SSH
+          echo "FTP_USERNAME=${{ secrets.FTP_USERNAME }}" >> $GITHUB_ENV
+          echo "FTP_PASSWORD=${{ secrets.FTP_PASSWORD }}" >> $GITHUB_ENV
+          echo "SERVER_HOST=${{ secrets.SERVER_HOST }}" >> $GITHUB_ENV
+          echo "SERVER_USERNAME=${{ secrets.SERVER_USERNAME }}" >> $GITHUB_ENV
+          echo "SERVER_PASSWORD=${{ secrets.SERVER_PASSWORD }}" >> $GITHUB_ENV
+          # Variables de la base de données
+          echo "DB_HOST=${{ secrets.DB_HOST }}" >> $GITHUB_ENV
+          echo "DB_PORT=${{ secrets.DB_PORT }}" >> $GITHUB_ENV
+          echo "DB_USER=${{ secrets.DB_USER }}" >> $GITHUB_ENV
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> $GITHUB_ENV
+          echo "DB_NAME=${{ secrets.DB_NAME }}" >> $GITHUB_ENV
+
+      # 6. Modifier l’API URL selon l’environnement
+      - name: Configure API URL
+        run: |
+          echo "SERVER_URL=${{ secrets.SERVER_HOST }}" >> $GITHUB_ENV
+
+      # 7. Build du frontend
+      - name: Build frontend
+        run: npm run build
+
+      # 8. Déplacer le frontend compilé dans le backend
+      - name: Move frontend to backend
+
+      # 9. Déployer le backend
+      - name: Deploy backend
+        run: node server.js
