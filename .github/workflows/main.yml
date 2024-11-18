@@ -58,7 +58,9 @@ jobs:
           npm run build
 
       # 8. Déplacer le frontend compilé dans le backend
-      # - name: Move frontend to backend
+      - name: Move frontend to backend
+        run: |
+          mv frontv2/dist Back/public
 
       # 9. Déployer le backend
       - name: Deploy backend
