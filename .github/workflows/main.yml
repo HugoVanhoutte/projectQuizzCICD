@@ -55,7 +55,7 @@ jobs:
       - name: install front dependencies
         run: |
           cd frontv2
-          npm i
+          npm install
       # 7. Build du frontend
       - name: Build frontend
         run: |
