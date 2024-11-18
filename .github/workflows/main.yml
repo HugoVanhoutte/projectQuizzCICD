@@ -62,4 +62,6 @@ jobs:
 
       # 9. Déployer le backend
       - name: Deploy backend
-        run: node server.js
+        run: |
+          cd Back
+          node server.js
