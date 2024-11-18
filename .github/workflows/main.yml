@@ -37,11 +37,11 @@ jobs:
           echo "FTP_USERNAME=${{ secrets.FTP_USERNAME }}" >> $GITHUB_ENV 
           echo "FTP_PASSWORD=${{ secrets.FTP_PASSWORD }}" >> $GITHUB_ENV 
           echo "SERVER_HOST=${{ secrets.SERVER_HOST }}" >> $GITHUB_ENV 
-          echo "DB_HOST=${{ secrets.PROD_DB_HOST }}" >> $GITHUB_ENV 
-          echo "DB_USER=${{ secrets.PROD_DB_USER }}" >> $GITHUB_ENV 
-          echo "DB_PASSWORD=${{ secrets.PROD_DB_PASSWORD }}" >> $GITHUB_ENV 
-          echo "DB_NAME=${{ secrets.PROD_DB_NAME }}" >> $GITHUB_ENV
-          echo "DB_PORT=${{secrets.PROD_DB_PORT}}" >> $GITHUB_ENV
+          echo "PROD_DB_HOST=${{ secrets.PROD_DB_HOST }}" >> $GITHUB_ENV 
+          echo "PROD_DB_USER=${{ secrets.PROD_DB_USER }}" >> $GITHUB_ENV 
+          echo "PROD_DB_PASSWORD=${{ secrets.PROD_DB_PASSWORD }}" >> $GITHUB_ENV 
+          echo "PROD_DB_NAME=${{ secrets.PROD_DB_NAME }}" >> $GITHUB_ENV
+          echo "PROD_DB_PORT=${{secrets.PROD_DB_PORT}}" >> $GITHUB_ENV
 
       # 6. Modifier l’API URL selon l’environnement
       - name: Configure API URL
