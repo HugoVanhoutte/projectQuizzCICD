@@ -12,14 +12,14 @@ const swaggerOptions = {
     swaggerDefinition: {
         openapi: '3.0.0',
         info: {
-          title: 'API Quiz',
-          version: '0.0.1',
-          description: 'Description de zinzin',
-          contact: {
-              name: 'Hugo'
-          },
+            title: 'API Quiz',
+            version: '0.0.1',
+            description: 'Description de zinzin',
+            contact: {
+                name: 'Hugo'
+            },
             servers: [
-                { rl: 'http://localhost:3000' }
+                { rl: process.env.SERVER_URL }
             ]
         }
     },
@@ -37,6 +37,8 @@ app.use('/api/quizz', quizzRoutes)
 
 const resultsRoutes = require('./routes/results')
 app.use('/api/results', resultsRoutes)
+
+app.use(express.static('public'));
 
 const port = process.env.PORT || 3333;
 app.listen(port, () => {
