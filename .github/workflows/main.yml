@@ -68,7 +68,7 @@ jobs:
         username: ${{ secrets.FTP_USER }}
         key: ${{ secrets.SSH_KEY }}
         port: 22
-        source: "dist/*"
+        source: "/*"
         target: "/var/www/graduate.hugo-vanhoutte.dev/"
 
     - name: Execute SSH commands to move content
